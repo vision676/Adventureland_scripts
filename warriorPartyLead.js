@@ -30,16 +30,7 @@ setInterval(function(){
    var currentMap = get_map()
    var sellableLoot = ["ringsj","hpbelt","hpamulet"]
    
-handleGoldItems(getGold,minGold,sellableLoot,getInventory)  
-   
-  async function handleGoldItems(gold,mingold,items,inventory){
-	   if(gold > mingold){
-		   send_gold("Porkshop",mingold)}
-        for(let i of inventory){
-			if(i != null){
-        if (items.includes(i.name)){
-			  let getItemLoc = locate_item(i.name)
-			   send_item("Porkshop",getItemLoc,9999)}}}}
+
 	   
    
    const currentFarmMob = "crab"
@@ -120,11 +111,19 @@ handleGoldItems(getGold,minGold,sellableLoot,getInventory)
            smart_move(destination,)}
                  buy(mpPot,mpAm)
            await sleep (100)}}
+	
+//Zeugs zum Merchant
    
-   //Merchant Sachen senden
-
-
+   handleGoldItems(getGold,minGold,sellableLoot,getInventory)  
    
+  async function handleGoldItems(gold,mingold,items,inventory){
+	   if(gold > mingold){
+		   send_gold("Porkshop",mingold)}
+        for(let i of inventory){
+			if(i != null){
+        if (items.includes(i.name)){
+			  let getItemLoc = locate_item(i.name)
+			   send_item("Porkshop",getItemLoc,9999)}}}}
        
        //Alles an Loot aufheben
        loot();
